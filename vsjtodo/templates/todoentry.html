@@ -5,6 +5,22 @@
     <title>Test</title>
 </head>
 <body>
-
+<form method="post">
+    {% csrf_token %}
+    <h1>Manual Form </h1>
+    <label>Task</label>
+    {{form.task}}
+    <br>
+    <label>Description</label>
+    {{form.description}}
+    <br>
+    <label>Status</label>
+    {{form.status}}
+    <br>
+    <label>Date</label>
+    {{form.dateoftask}}
+    <br>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
