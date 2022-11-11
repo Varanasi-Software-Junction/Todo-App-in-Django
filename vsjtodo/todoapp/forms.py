@@ -1,5 +1,4 @@
-from django import forms
-from django.forms import ModelForm, TextInput, DateTimeField
+from django.forms import ModelForm, TextInput
 
 from .models import TodoModel
 
@@ -8,26 +7,35 @@ class TodoForm(ModelForm):
     class Meta:
         model = TodoModel
         # fields = fields = '__all__'
-        fields = ['task', 'description', 'status','dateoftask']
+        fields = ['id','task', 'description', 'status', 'dateoftask']
         widgets = {
+            'id': TextInput(attrs={
+                'class': "form-control",
+                'id': 'taskid',
+                'placeholder': 'Task', 'required': ''
+            }
+            )
+            ,
+
+
             'task': TextInput(attrs={
                 'class': "form-control",
-                'id':'taskinput',
-                'placeholder': 'Task','required':''
+                'id': 'taskinput',
+                'placeholder': 'Task', 'required': ''
             }
             )
             ,
             'description': TextInput(attrs={
                 'class': "form-control",
                 'id': 'descriptioninput',
-                'placeholder': 'Task','required':''
+                'placeholder': 'Task', 'required': ''
             }
             )
             ,
             'status': TextInput(attrs={
                 'class': "form-control",
                 'id': 'descriptioninput',
-                'placeholder': 'Status','required':''
+                'placeholder': 'Status', 'required': ''
             }
             )
             ,
@@ -36,15 +44,13 @@ class TodoForm(ModelForm):
                 'id': 'dateinput',
                 'placeholder': 'Date'
                 ,
-                'type':'date',
-                'required':''
+                'type': 'datetime-local',
+                'required': ''
             }
             )
 
-
-
-
         }
+
 
 """
 

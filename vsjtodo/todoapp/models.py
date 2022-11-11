@@ -7,3 +7,4 @@ class TodoModel(models.Model):
     description = models.CharField(max_length=200)
     status = models.CharField(max_length=200)
     dateoftask = models.DateTimeField()
+

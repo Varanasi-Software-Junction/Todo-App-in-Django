@@ -1,6 +1,6 @@
 {% extends "base/base.html" %}
 
-{% block title %}Form Page{% endblock %}
+{% block title %}Update Page{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -8,6 +8,8 @@
     <div class="col-md-8">
 <form method="post">
     {% csrf_token %}
+    <input type="hidden" type="text" name="id" value="{{id}}">
+    {{form.id}}
         <div class="form-floating mb-3">
             {{form.task}}
             <label for="taskinput">Task</label>
