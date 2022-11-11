@@ -4,6 +4,31 @@ from .forms import TodoForm
 from .models import TodoModel
 
 
+# Del
+
+
+def delete(request):
+    if request.POST:
+        id = request.POST["id"]
+
+        newtask = TodoModel.objects.filter(id=id)[0]
+        newtask.delete()
+
+        return HttpResponse("Deleted")
+
+    if request.GET:
+        id = request.GET["id"]
+        print(id)
+        data = TodoModel.objects.filter(id=id)[0]
+        print(data)
+        data = {'dateoftask': data.dateoftask, 'task': data.task, "description": data.description,
+                "status": data.status}
+
+        return render(request, "update.html", {"id": id, "form": TodoForm(initial=data)})
+
+    return render(request, "update.html")
+
+
 # Create your views here.
 def index(request):
     return render(request, "test.html")
@@ -11,13 +36,13 @@ def index(request):
 
 def update(request):
     if request.POST:
-        id=request.POST["id"]
+        id = request.POST["id"]
 
         data = TodoForm(request.POST)
-        print("Data ",data)
+        print("Data ", data)
         newtask = TodoModel.objects.filter(id=id)[0]
         if data.is_valid():
-            newtask.task=data.instance.task
+            newtask.task = data.instance.task
             newtask.description = data.instance.description
             newtask.dateoftask = data.instance.dateoftask
             newtask.status = data.instance.status
@@ -50,7 +75,4 @@ def form(request):
             newtask.save()
             return HttpResponse("Saved")
         return HttpResponse("Not Saved")
-
-    # initial = {"task": "MyTask", "description": "Des", "status": 100,"dateoftask":"11-11-2022"}
     return render(request, "form.html", {"form": TodoForm()})
-

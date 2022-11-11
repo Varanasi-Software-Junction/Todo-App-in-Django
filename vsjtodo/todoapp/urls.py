@@ -9,5 +9,5 @@ urlpatterns = [
 path('taskentry/', views.form),
 path('tasks/', views.alltasks),
 path('update/', views.update),
-
+path('delete/', views.delete),
 ]
