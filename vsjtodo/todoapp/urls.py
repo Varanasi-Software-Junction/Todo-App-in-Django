@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-path('form/', views.form),
+path('taskentry/', views.form),
 path('tasks/', views.alltasks),
 path('update/', views.update),
 

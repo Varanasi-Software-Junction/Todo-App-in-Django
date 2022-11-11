@@ -9,13 +9,7 @@ class TodoForm(ModelForm):
         # fields = fields = '__all__'
         fields = ['id','task', 'description', 'status', 'dateoftask']
         widgets = {
-            'id': TextInput(attrs={
-                'class': "form-control",
-                'id': 'taskid',
-                'placeholder': 'Task', 'required': ''
-            }
-            )
-            ,
+
 
 
             'task': TextInput(attrs={
